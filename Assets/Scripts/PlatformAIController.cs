@@ -6,6 +6,7 @@ public class PlatformAIController : PlatformController
 
     private void Update()
     {
+        // if ball has been destroyed 
         if (ball == null)
         {
             TryToFindBall();

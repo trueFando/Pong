@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -9,7 +7,11 @@ public class Ball : MonoBehaviour
 
     private void Start()
     {
-        Vector3 startForce = FindObjectOfType<PlatformHumanController>().transform.position - transform.position;
-        GetComponent<Rigidbody2D>().AddForce(startForce * speed, ForceMode2D.Impulse);
+        // find the point in world to push the ball (bottom center of the viewport)
+        Vector3 viewportStartPoint = new Vector3(0.5f, 0f, 0f);
+        Vector3 startPoint = Camera.main.ViewportToWorldPoint(viewportStartPoint);
+
+        // push the ball to this point
+        GetComponent<Rigidbody2D>().AddForce((startPoint - transform.position) * speed, ForceMode2D.Impulse);
     }
 }
