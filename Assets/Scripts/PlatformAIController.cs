@@ -13,8 +13,11 @@ public class PlatformAIController : PlatformController
             return;
         }
 
-        // follow the ball on X axis
-        Move(ball.transform.position.x > transform.position.x);
+        if (ball.transform.position.y > center.y)
+        {
+            // follow the ball on X axis
+            Move(ball.transform.position.x > transform.position.x);
+        }
     }
 
     private void TryToFindBall()

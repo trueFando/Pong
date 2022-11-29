@@ -8,6 +8,7 @@ public class PlatformController : MonoBehaviour
     // cam for setting of bounds (using viewport)
     protected Camera mainCam;
     protected float leftBound, rightBound;
+    protected Vector3 center;
 
     private void Start()
     {
@@ -20,6 +21,7 @@ public class PlatformController : MonoBehaviour
         float boundOffset = 1f; // убрать магическое число
         leftBound = mainCam.ViewportToWorldPoint(new Vector3(0f, 0f)).x + boundOffset;
         rightBound = mainCam.ViewportToWorldPoint(new Vector3(1f, 0f)).x - boundOffset;
+        center = mainCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f));
     }
 
     protected void Move(bool right) // if right then move right, else move left
